@@ -1,6 +1,5 @@
 // hooks/useDashboardData.ts
 import { useState, useEffect } from 'react';
-
 import { Wallet, Transaction, DashboardData } from '../types/types';
 
 const useDashboardData = (): DashboardData => {
@@ -24,6 +23,9 @@ const useDashboardData = (): DashboardData => {
         if (!transactionsRes.ok) throw new Error('Failed to fetch transactions data');
         const transactionsData: Transaction[] = await transactionsRes.json();
 
+        // Add a 1-second delay before updating state
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
         // Update state with fetched data
         setWallet(walletData);
         setTransactions(transactionsData);
@@ -39,7 +41,7 @@ const useDashboardData = (): DashboardData => {
     fetchData();
   }, []);
 
-  return { wallet, transactions, loading, error };
+  return { wallet, setWallet, transactions, setTransactions, loading, error };
 };
 
 export default useDashboardData;

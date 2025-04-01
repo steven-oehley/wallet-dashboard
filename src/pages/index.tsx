@@ -11,11 +11,17 @@ const DashboardPage = () => {
   return (
     <main className="flex min-h-screen flex-col bg-gradient-to-b from-slate-950 to-slate-900">
       <Header title="Wallet 💰">
-        <BalancePill balance={wallet?.balance ?? 0} currency={wallet?.currency} />
+        {!error && (
+          <BalancePill
+            balance={wallet?.balance ?? 0}
+            currency={wallet?.currency ?? ''}
+            loading={loading}
+          />
+        )}
       </Header>
       <WalletActions />
       <FilterToolBar />
-      <TransactionList transactions={transactions} />
+      <TransactionList transactions={transactions} loading={loading} />
     </main>
   );
 };
