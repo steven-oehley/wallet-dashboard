@@ -1,8 +1,13 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   html,
+  body,
+  #root {
+    @apply m-0 h-full min-h-screen w-full p-0;
+  }
+
   body {
-    @apply bg-slate-900 min-h-screen;
+    @apply bg-gradient-to-b from-slate-950 to-slate-900 text-white;
   }
 }

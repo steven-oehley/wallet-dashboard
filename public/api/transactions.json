@@ -1,0 +1,98 @@
+[
+  {
+    "id": "txn_001",
+    "type": "deposit",
+    "amount": 2000,
+    "currency": "ZAR",
+    "status": "success",
+    "date": "2024-03-25T10:15:00Z"
+  },
+  {
+    "id": "txn_002",
+    "type": "withdrawal",
+    "amount": 500,
+    "currency": "ZAR",
+    "status": "failed",
+    "date": "2024-03-26T08:32:00Z"
+  },
+  {
+    "id": "txn_003",
+    "type": "deposit",
+    "amount": 1500,
+    "currency": "ZAR",
+    "status": "success",
+    "date": "2024-03-27T14:20:00Z"
+  },
+  {
+    "id": "txn_004",
+    "type": "deposit",
+    "amount": 850,
+    "currency": "ZAR",
+    "status": "success",
+    "date": "2024-03-27T16:45:00Z"
+  },
+  {
+    "id": "txn_005",
+    "type": "withdrawal",
+    "amount": 3000,
+    "currency": "ZAR",
+    "status": "success",
+    "date": "2024-03-28T09:10:00Z"
+  },
+  {
+    "id": "txn_007",
+    "type": "deposit",
+    "amount": 320,
+    "currency": "ZAR",
+    "status": "success",
+    "date": "2024-03-28T13:15:00Z"
+  },
+  {
+    "id": "txn_008",
+    "type": "withdrawal",
+    "amount": 150,
+    "currency": "ZAR",
+    "status": "success",
+    "date": "2024-03-28T14:30:00Z"
+  },
+  {
+    "id": "txn_009",
+    "type": "deposit",
+    "amount": 1000,
+    "currency": "ZAR",
+    "status": "success"
+  },
+  {
+    "id": "txn_010",
+    "type": "deposit",
+    "amount": 550,
+    "currency": "ZAR",
+    "status": "success",
+    "date": "2024-03-29T10:45:00Z"
+  },
+  {
+    "id": "txn_011",
+    "type": "withdrawal",
+    "amount": 2500,
+    "currency": "ZAR",
+    "status": "success",
+    "date": "2024-03-29T16:20:00Z"
+  },
+  {
+    "id": "txn_012",
+    "type": "deposit",
+    "amount": 75,
+    "currency": "ZAR",
+    "status": "success",
+    "date": "2024-03-30T09:40:00Z"
+  },
+  {
+    "id": "txn_013",
+    "type": "deposit",
+    "amount": 6605.5,
+    "currency": "ZAR",
+    "status": "success",
+    "date": "2024-03-30T15:30:00Z",
+    "description": "Initial balance"
+  }
+]
