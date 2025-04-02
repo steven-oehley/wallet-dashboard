@@ -18,3 +18,8 @@ const formatter = new Intl.NumberFormat('en-US');
 export const formatAmount = (amount: number): string => {
   return formatter.format(amount);
 };
+
+export const simulateTransaction = () => {
+  // 80% success rate
+  return Math.random() < 0.1;
+};

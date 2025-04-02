@@ -10,6 +10,7 @@ import useDashboardData from '../hooks/useDashBoardData';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import { simulateTransaction } from '../utils/utils';
 
 const DashboardPage = () => {
   const [actionType, setActionType] = useState<'deposit' | 'withdraw' | null>(null);
@@ -18,26 +19,36 @@ const DashboardPage = () => {
   const { wallet, setWallet, transactions, setTransactions, loading, error } = useDashboardData();
 
   const walletAction = (amount: number, transactionType: 'deposit' | 'withdrawal') => {
-    setWallet(prevWallet => {
-      if (!prevWallet) return null;
+    const isSuccess = simulateTransaction();
 
-      if (transactionType === 'withdrawal') {
-        return { ...prevWallet, balance: prevWallet.balance - amount };
-      }
+    if (isSuccess) {
+      setWallet(prevWallet => {
+        if (!prevWallet) return null;
 
-      return { ...prevWallet, balance: prevWallet.balance + amount };
-    });
-    setTransactions(prevTransactions => [
-      ...prevTransactions,
-      {
-        id: nanoid(),
-        type: transactionType,
-        amount: amount,
-        currency: wallet?.currency ?? '',
-        status: 'success',
-        date: new Date().toISOString(),
-      },
-    ]);
+        if (transactionType === 'withdrawal') {
+          return { ...prevWallet, balance: prevWallet.balance - amount };
+        }
+
+        return { ...prevWallet, balance: prevWallet.balance + amount };
+      });
+      setTransactions(prevTransactions => [
+        ...prevTransactions,
+        {
+          id: nanoid(),
+          type: transactionType,
+          amount: amount,
+          currency: wallet?.currency ?? '',
+          status: 'success',
+          date: new Date().toISOString(),
+        },
+      ]);
+
+      toast.success(
+        `Successfully ${actionType === 'deposit' ? 'deposited' : 'withdrew'} ${amount} ${wallet?.currency ?? ''}`
+      );
+    } else {
+      toast.error(`Transaction failed. Please try again.`);
+    }
 
     setActionType(null);
   };
@@ -49,9 +60,6 @@ const DashboardPage = () => {
       walletAction(amount, 'deposit');
     }
     setActionType(null);
-    toast.success(
-      `Successfully ${actionType === 'deposit' ? 'deposited' : 'withdrew'} ${amount} ${wallet?.currency ?? ''}`
-    );
   };
 
   const onClearFilter = () => {
