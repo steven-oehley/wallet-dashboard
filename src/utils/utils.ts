@@ -12,3 +12,9 @@ export const formatDate = (dateString: string): { date: string; time: string } =
 
   return { date: dateFormatted, time: timeFormatted };
 };
+
+const formatter = new Intl.NumberFormat('en-US');
+
+export const formatAmount = (amount: number): string => {
+  return formatter.format(amount);
+};

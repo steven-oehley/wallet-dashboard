@@ -5,15 +5,11 @@ export interface Wallet {
 
 export interface Transaction {
   id: string;
-  type: 'deposit' | 'withdrawal' | 'purchase' | 'reward';
+  type: 'deposit' | 'withdrawal';
   amount: number;
   currency: string;
-  status: 'success' | 'pending' | 'failed';
+  status: 'success' | 'failed';
   date: string;
-  description: string;
-  paymentMethod?: string;
-  gameName?: string;
-  gameId?: string;
 }
 
 export interface DashboardData {

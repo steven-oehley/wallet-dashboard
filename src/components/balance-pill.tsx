@@ -1,9 +1,10 @@
+import { formatAmount } from '../utils/utils';
+
 interface BalancePillProps {
   balance: number;
   currency: string;
   loading?: boolean;
 }
-const formatter = new Intl.NumberFormat('en-US');
 
 const BalancePill = ({ balance, currency, loading = false }: BalancePillProps) => {
   return (
@@ -15,7 +16,7 @@ const BalancePill = ({ balance, currency, loading = false }: BalancePillProps) =
         </span>
       ) : (
         <>
-          <span className="text-sm font-bold text-white">{formatter.format(balance)}</span>
+          <span className="text-sm font-bold text-white">{formatAmount(balance)}</span>
           <span className="text-sm font-medium text-white"> {currency} </span>
         </>
       )}

@@ -1,5 +1,5 @@
 import { Transaction } from '../types/types';
-import { formatDate } from '../utils/utils';
+import { formatAmount, formatDate } from '../utils/utils';
 
 interface TransactionCardProps {
   transaction: Transaction;
@@ -17,7 +17,7 @@ const TransactionCard = ({ transaction }: TransactionCardProps) => {
         </div>
         <div className="flex flex-col items-end">
           <span className="text-lg font-bold text-slate-200">
-            {transaction.amount} {transaction.currency}
+            {formatAmount(transaction.amount)} {transaction.currency}
           </span>
           <span
             className={`rounded-full px-2 py-0.5 text-xs font-medium ${

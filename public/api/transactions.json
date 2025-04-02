@@ -60,7 +60,8 @@
     "type": "deposit",
     "amount": 1000,
     "currency": "ZAR",
-    "status": "success"
+    "status": "success",
+    "date": "2024-03-28T14:30:00Z"
   },
   {
     "id": "txn_010",
