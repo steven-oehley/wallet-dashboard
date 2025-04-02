@@ -54,6 +54,11 @@ const DashboardPage = () => {
     );
   };
 
+  const onClearFilter = () => {
+    setFilterType(null);
+    setSortOrder('desc');
+  };
+
   const filteredTransactions = transactions
     .filter(transaction => {
       // Apply type filter if set
@@ -99,6 +104,7 @@ const DashboardPage = () => {
         </button>
       </WalletActionsRow>
       <FilterToolBar
+        onClearFilter={onClearFilter}
         onSortChange={setSortOrder}
         onFilterChange={setFilterType}
         sortOrder={sortOrder}

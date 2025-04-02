@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Define prop types for the filter toolbar
 interface FilterToolBarProps {
+  onClearFilter: () => void;
   onSortChange: (sortOrder: 'asc' | 'desc') => void;
   onFilterChange: (filterType: string | null) => void;
   sortOrder: 'asc' | 'desc';
@@ -11,6 +12,7 @@ interface FilterToolBarProps {
 }
 
 const FilterToolBar = ({
+  onClearFilter,
   onSortChange,
   onFilterChange,
   sortOrder = 'desc',
@@ -72,6 +74,12 @@ const FilterToolBar = ({
                   <option value="deposit">Deposits only</option>
                   <option value="withdrawal">Withdrawals only</option>
                 </select>
+              </div>
+
+              <div>
+                <button className="cursor-pointer" onClick={onClearFilter}>
+                  ❌
+                </button>
               </div>
             </div>
           </div>
