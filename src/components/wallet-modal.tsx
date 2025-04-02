@@ -17,7 +17,7 @@ const WalletModal = ({
   maxWithdrawal,
   currency,
 }: WalletModalProps & { maxWithdrawal?: number }) => {
-  const [transactionAmount, setTransactionAmount] = useState<number>(0);
+  const [transactionAmount, setTransactionAmount] = useState<number | string>('');
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -29,9 +29,12 @@ const WalletModal = ({
     // Clear error when input changes
     if (error) setError(null);
 
-    // Show error if withdrawal amount exceeds balance
-    if (type === 'withdraw' && maxWithdrawal !== undefined && amount > maxWithdrawal) {
-      setError(`You can't withdraw more than ${maxWithdrawal}`);
+    if (transactionAmount !== '') {
+      const amount = Number(transactionAmount);
+      // Show error if withdrawal amount exceeds balance
+      if (type === 'withdraw' && maxWithdrawal !== undefined && amount > maxWithdrawal) {
+        setError(`You can't withdraw more than ${maxWithdrawal}`);
+      }
     }
   };
 
@@ -40,13 +43,16 @@ const WalletModal = ({
     setIsLoading(true);
 
     setTimeout(() => {
-      onModalSubmit(transactionAmount);
+      onModalSubmit(+transactionAmount);
       setIsLoading(false);
     }, 1000);
   };
 
   const isSubmitDisabled =
-    maxWithdrawal !== undefined && (transactionAmount > maxWithdrawal || transactionAmount <= 0);
+    maxWithdrawal !== undefined &&
+    (transactionAmount === '' ||
+      Number(transactionAmount) > maxWithdrawal ||
+      Number(transactionAmount) <= 0);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
